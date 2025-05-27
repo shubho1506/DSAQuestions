@@ -1,6 +1,4 @@
-package Strings.Easy;
-
-import java.util.SplittableRandom;
+package Strings.Basics;
 
 public class ValidPalindrome {
     public static void main(String[] args) {
