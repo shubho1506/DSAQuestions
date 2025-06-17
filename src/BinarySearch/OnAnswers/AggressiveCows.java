@@ -1,7 +1,7 @@
-package BinarySearch.OneDimensionalArrays;
+package BinarySearch.OnAnswers;
 
 //You are given an array with unique elements of stalls[], which denote the position of a stall.
-// You are also given an integer k which denotes the number of aggressive cows.
+//You are also given an integer k which denotes the number of aggressive cows.
 //Your task is to assign stalls to k cows such that the minimum distance between any two of them is the maximum possible.
 //Examples :
 
@@ -24,6 +24,8 @@ package BinarySearch.OneDimensionalArrays;
 //Explanation: Each cow can be placed in any of the stalls, as the no. of stalls are exactly equal to the number of cows.
 //The minimum distance between cows, in this case, is 1, which also is the largest among all possible ways.
 
+import java.util.Arrays;
+
 public class AggressiveCows {
     public static void main(String[] args) {
         int[] stalls = {10, 1, 2, 7, 5};
@@ -31,6 +33,39 @@ public class AggressiveCows {
     }
 
     public static int aggressiveCows(int[] stalls, int k) {
+        Arrays.sort(stalls);
+        int si = 1;
+        int ei = stalls[stalls.length - 1] - stalls[0];
 
+        int ans = -1;
+
+        while (si<=ei){
+            int mid = si+(ei-si)/2;
+
+            if(isPossible(stalls,k,mid)){
+                ans = mid;
+                si=mid+1;
+            }else {
+                ei=mid-1;
+            }
+        }
+
+        return ans;
+    }
+
+    private static boolean isPossible(int[] stalls, int k,int maxDist){
+        int cows = 1;
+        int lastStall = stalls[0];
+        for(int stall : stalls){
+            if(stall-lastStall>=maxDist){
+                cows++;
+                lastStall=stall;
+            }
+            if(cows==k){
+                return true;
+            }
+        }
+
+        return false;
     }
 }

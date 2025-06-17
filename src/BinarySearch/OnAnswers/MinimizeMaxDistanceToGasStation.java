@@ -24,7 +24,8 @@ package BinarySearch.OnAnswers;
 
 public class MinimizeMaxDistanceToGasStation {
     public static void main(String[] args) {
-
+        int[] stations = {3, 6, 12, 19, 33, 44, 67, 72, 89, 95};
+//        System.out.println(findSmallestMaxDist(stations,2));
     }
 
 //    public static double findSmallestMaxDist(int stations[], int k) {

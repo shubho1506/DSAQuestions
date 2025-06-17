@@ -24,46 +24,38 @@ public class SplitArrayLargestSum {
     }
 
     public static int splitArray(int[] arr, int k) {
-        int n = arr.length;
-
-        if (k > n) return -1;
-
-        int low = 0, high = 0;
-        for (int pages : arr) {
-            low = Math.max(low, pages);
-            high += pages;
+        int si=0;
+        int ei=0;
+        for(int num : arr){
+            ei+=num;
         }
-
-        int result = -1;
-
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-
-            if (isPossible(arr, k, mid)) {
-                result = mid;
-                high = mid - 1;
-            } else {
-                low = mid + 1;
+        int ans = -1;
+        while(si<=ei){
+            int mid = si + (ei-si)/2;
+            if(isPossible(arr,k,mid)){
+                ans = mid;
+                ei=mid-1;
+            }else {
+                si=mid+1;
             }
         }
-
-        return result;
+        return ans;
     }
 
-    private static boolean isPossible(int[] arr, int k, int maxPagesAllowed) {
-        int studentCount = 1;
-        int pagesSum = 0;
-
-        for (int pages : arr) {
-            if (pagesSum + pages > maxPagesAllowed) {
-                studentCount++;
-                pagesSum = pages;
-                if (studentCount > k) return false;
-            } else {
-                pagesSum += pages;
+    private static boolean isPossible(int[] arr, int k, int maxSumPossible) {
+        int maxSum=0;
+        int current=1;
+        for(int num : arr){
+            if(maxSum+num>maxSumPossible){
+                current++;
+                maxSum=num;
+                if(current>k){
+                    return false;
+                }
+            }else{
+                maxSum+=num;
             }
         }
-
         return true;
     }
 }
