@@ -1,9 +1,9 @@
 package LinkedList.Implementation;
 
-public class DLImplementation {
+public class DoublyLinkedList {
     public DLNode head;
 
-    public DLImplementation(){
+    public DoublyLinkedList(){
         head = null;
     }
 
@@ -124,7 +124,7 @@ public class DLImplementation {
     }
 
     public static void main(String[] args) {
-        DLImplementation dll = new DLImplementation();
+        DoublyLinkedList dll = new DoublyLinkedList();
         dll.AddFirst("This");
         dll.AddLast("is");
         dll.AddLast("shubhodeep");
