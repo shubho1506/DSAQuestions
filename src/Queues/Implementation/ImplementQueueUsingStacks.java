@@ -1,4 +1,4 @@
-package StackAndQueues;
+package Queues.Implementation;
 
 import java.util.Stack;
 
