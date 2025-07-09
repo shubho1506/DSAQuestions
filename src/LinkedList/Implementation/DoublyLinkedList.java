@@ -1,19 +1,19 @@
 package LinkedList.Implementation;
 
-public class DoublyLinkedList {
-    public DLNode head;
+public class DoublyLinkedList<T> {
+    public DLNode<T> head;
 
     public DoublyLinkedList(){
         head = null;
     }
 
-    public void AddLast(String data){
-        DLNode newNode = new DLNode(data);
-        if(head ==null){
+    public void AddLast(T data){
+        DLNode<T> newNode = new DLNode<>(data);
+        if(head == null){
             head = newNode;
             return;
         }
-        DLNode current = head;
+        DLNode<T> current = head;
         while(current.next != null){
             current = current.next;
         }
@@ -21,34 +21,32 @@ public class DoublyLinkedList {
         newNode.prev = current;
     }
 
-    public void AddFirst(String data){
-        DLNode newNode = new DLNode(data);
-        if(head==null){
+    public void AddFirst(T data){
+        DLNode<T> newNode = new DLNode<>(data);
+        if(head == null){
             head = newNode;
             return;
         }
-        DLNode current = head;
-        current.prev = newNode;
-        newNode.next = current;
+        head.prev = newNode;
+        newNode.next = head;
         head = newNode;
     }
 
     public void printListForward(){
-        if(head==null){
+        if(head == null){
             System.out.println("Doubly linked list is empty");
             return;
         }
-        DLNode current = head;
-        while(current !=null){
+        DLNode<T> current = head;
+        while(current != null){
             System.out.print(current.data + " => ");
             current = current.next;
         }
         System.out.println("Null");
     }
 
-    //using recursion otherwise just loop forward till end and print backwards
-    public void printListBackward(DLNode node){
-        if(head==null){
+    public void printListBackward(DLNode<T> node){
+        if(head == null){
             System.out.println("Doubly linked list is empty");
             return;
         }
@@ -58,36 +56,34 @@ public class DoublyLinkedList {
         }
         printListBackward(node.next);
         System.out.print(node.data + " => ");
-        if(node.prev==null){
+        if(node.prev == null){
             System.out.println("Null");
         }
     }
 
     public void DeleteFirst(){
-        if(head==null){
+        if(head == null){
             System.out.println("Doubly linked list is empty");
             return;
         }
-        if(head.next==null){
+        if(head.next == null){
             head = null;
             return;
         }
-        DLNode current = head;
-        head = current.next;
-        current.next = null;
+        head = head.next;
         head.prev = null;
     }
 
     public void DeleteLast(){
-        if(head==null){
+        if(head == null){
             System.out.println("Doubly linked list is empty");
             return;
         }
-        if(head.next==null){
+        if(head.next == null){
             head = null;
             return;
         }
-        DLNode current = head;
+        DLNode<T> current = head;
         while(current.next != null){
             current = current.next;
         }
@@ -97,23 +93,20 @@ public class DoublyLinkedList {
 
     public int LengthOfDoubleLinkedList(){
         int count = 0;
-        if(head==null){
-            return 0;
-        }
-        DLNode current = head;
-        while (current != null){
+        DLNode<T> current = head;
+        while(current != null){
             count++;
             current = current.next;
         }
         return count;
     }
 
-    public boolean searchInDoubleLinkedList(String data){
+    public boolean searchInDoubleLinkedList(T data){
         if(head == null){
-            System.out.println("Double linked list is empty");
+            System.out.println("Doubly linked list is empty");
             return false;
         }
-        DLNode current = head;
+        DLNode<T> current = head;
         while(current != null){
             if(current.data.equals(data)){
                 return true;
@@ -124,11 +117,12 @@ public class DoublyLinkedList {
     }
 
     public static void main(String[] args) {
-        DoublyLinkedList dll = new DoublyLinkedList();
+        DoublyLinkedList<String> dll = new DoublyLinkedList<>();
         dll.AddFirst("This");
         dll.AddLast("is");
         dll.AddLast("shubhodeep");
         dll.AddFirst("Please");
+
         System.out.println(dll.LengthOfDoubleLinkedList());
         dll.printListForward();
         dll.printListBackward(dll.head);

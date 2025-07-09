@@ -1,11 +1,11 @@
 package LinkedList.Implementation;
 
-public class DLNode {
-    public String data;
-    public DLNode next;
-    public DLNode prev;
+public class DLNode<T> {
+    public T data;
+    public DLNode<T> next;
+    public DLNode<T> prev;
 
-    public DLNode(String data){
+    public DLNode(T data){
         this.data = data;
         this.next = null;
         this.prev = null;
