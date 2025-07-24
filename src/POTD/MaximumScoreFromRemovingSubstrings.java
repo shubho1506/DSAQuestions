@@ -25,6 +25,7 @@ package POTD;
 public class MaximumScoreFromRemovingSubstrings {
     public static void main(String[] args) {
         System.out.println(maximumGain("aabbaaxybbaabb",5,4));
+        System.out.println(maximumGainOptimmized("aabbaaxybbaabb",5,4));
     }
 
     public static int maximumGain(String s, int x, int y) {
@@ -86,6 +87,37 @@ public class MaximumScoreFromRemovingSubstrings {
         }
 
         return Math.max((rem_ab_F * x + rem_ba_S * y), (rem_ba_F * y + rem_ab_S * x));
+    }
+
+    public static int maximumGainOptimmized(String s, int x, int y){
+        if(x>y){
+            return maxGain(s,x,"ab",y,"ba");
+        }
+        return maxGain(s,y,"ba",x,"ab");
+    }
+
+    private static int maxGain(String str,int x,String firstPair,int y,String secondPair){
+        StringBuilder sb = new StringBuilder();
+        int points = 0;
+
+        for(char c : str.toCharArray()){
+            sb.append(c);
+            if(sb.length()>=2 && sb.charAt(sb.length()-2)==firstPair.charAt(0) && sb.charAt(sb.length()-1)==firstPair.charAt(1)){
+                sb.delete(sb.length()-2,sb.length());
+                points += x;
+            }
+        }
+
+        StringBuilder finalsb = new StringBuilder();
+        for (char c : sb.toString().toCharArray()){
+            finalsb.append(c);
+            if(finalsb.length()>=2 && finalsb.charAt(finalsb.length()-2)==secondPair.charAt(0) && finalsb.charAt(finalsb.length()-1)==secondPair.charAt(1)){
+                finalsb.delete(finalsb.length()-2,finalsb.length());
+                points += y;
+            }
+        }
+
+        return points;
     }
 
 }
