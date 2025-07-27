@@ -42,7 +42,6 @@ public class NextElementWithGreaterFrequency {
         }
 
         for(int i=0;i<arr.length;i++){
-
             while (!stack.isEmpty() && hmp.get(arr[i])>hmp.get(arr[stack.peek()])){
                 arrl.set(stack.pop(), arr[i]);
             }

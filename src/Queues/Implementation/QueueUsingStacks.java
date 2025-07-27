@@ -2,10 +2,10 @@ package Queues.Implementation;
 
 import java.util.Stack;
 
-public class ImplementQueueUsingStacks {
+public class QueueUsingStacks {
     Stack<Integer> s1;
 
-    public ImplementQueueUsingStacks(){
+    public QueueUsingStacks(){
         s1 = new Stack<>();
     }
 
@@ -42,7 +42,7 @@ public class ImplementQueueUsingStacks {
     }
 
     public static void main(String[] args) {
-        ImplementQueueUsingStacks queue = new ImplementQueueUsingStacks();
+        QueueUsingStacks queue = new QueueUsingStacks();
         queue.push(20);
         queue.push(10);
         queue.push(40);
