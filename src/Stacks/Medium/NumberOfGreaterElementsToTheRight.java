@@ -22,26 +22,32 @@ import java.util.Stack;
 
 public class NumberOfGreaterElementsToTheRight {
     public static void main(String[] args) {
-        int[] nums = {3, 4, 2, 7, 5, 8, 10, 6};
-        int[] indices = {0,5};
-        System.out.println(Arrays.toString(count_NGEs(nums.length,nums,2,indices)));
+        int[] arr = {3, 4, 2, 7, 5, 8, 10, 6};
+        int[] indices = {0, 5};
+        System.out.println(Arrays.toString(count_NGEs(arr.length, arr, 2, indices)));
     }
 
     public static int[] count_NGEs(int N, int arr[], int queries, int indices[]) {
+        int[] countRight = new int[N];   // store counts for every index
         Stack<Integer> stack = new Stack<>();
-        int[] greaterCount = new int[N];
 
-        for(int i=arr.length-1;i>=0;i++){
-            while(!stack.isEmpty() && stack.peek()<=arr[i]){
-                stack.pop();
+        // Traverse from right to left
+        for (int i = N - 1; i >= 0; i--) {
+            int count = 0;
+
+            // count all elements in stack that are greater
+            for (int num : stack) {
+                if (num > arr[i]) count++;
             }
-            greaterCount[i] = stack.size();
-            stack.push(arr[i]);
+
+            countRight[i] = count;
+            stack.push(arr[i]); // push current number to stack
         }
 
-        int[] ans = new int[indices.length];
-        for (int i = 0; i < indices.length; i++) {
-            ans[i] = greaterCount[indices[i]];
+        // now fill answers for queries
+        int[] ans = new int[queries];
+        for (int q = 0; q < queries; q++) {
+            ans[q] = countRight[indices[q]];
         }
         return ans;
     }

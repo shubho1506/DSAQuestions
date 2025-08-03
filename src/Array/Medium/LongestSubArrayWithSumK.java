@@ -7,8 +7,11 @@ public class LongestSubArrayWithSumK {
         System.out.println("Longest Subarray Length: " + longestSubArrayWithSumK(arr, k));
     }
 
-    public static int longestSubArrayWithSumK(int arr[], int k) {
-        int left = 0, right = 0, sum = 0, maxLen = 0;
+    public static int longestSubArrayWithSumK(int[] arr, int k) {
+        int left = 0;
+        int right = 0;
+        int sum = 0;
+        int maxLen = 0;
 
         while (right < arr.length) {
             sum += arr[right];
@@ -19,7 +22,6 @@ public class LongestSubArrayWithSumK {
             if (sum == k) {
                 maxLen = Math.max(maxLen, right - left + 1);
             }
-
             right++;
         }
 
