@@ -15,23 +15,21 @@ package Algorithms.Famous;
 
 public class KadaneAlgorithm {
     public static void main(String[] args) {
-        int[] arr = {5, 4, 1, 7, 8};
+        int[] arr = {-1,-2,-3,4};
         System.out.println(maxSubarraySum(arr, arr.length));
     }
 
     public static long maxSubarraySum(int arr[], int n){
-        long sum  = Integer.MIN_VALUE;
-        long max = 0;
+        long max  = Integer.MIN_VALUE;
+        long sum = 0;
         if(n==0){
             return 0;
         }else{
             for(int i=0;i<n;i++){
-                max = Math.max(arr[i],max + arr[i]);
-                if(max>sum){
-                    sum = max;
-                }
+                sum = Math.max(arr[i],sum + arr[i]);
+                max = Math.max(max,sum);
             }
         }
-        return sum;
+        return max;
     }
 }

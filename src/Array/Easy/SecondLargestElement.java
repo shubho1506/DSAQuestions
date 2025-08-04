@@ -24,13 +24,14 @@ public class SecondLargestElement {
         int largest = arr[0];
         int slargest = -1;
         for(int i=0;i<arr.length;i++){
-            largest = Math.max(largest,arr[i]);
-        }
-        for(int j=0;j<arr.length;j++){
-            if(arr[j]>slargest && arr[j] != largest){
-                slargest = arr[j];
+            if(arr[i]>largest){
+                slargest = largest;
+                largest = arr[i];
+            } else if (arr[i]<largest && arr[i]>slargest) {
+                slargest = arr[i];
             }
         }
+
         return slargest;
     }
 }
