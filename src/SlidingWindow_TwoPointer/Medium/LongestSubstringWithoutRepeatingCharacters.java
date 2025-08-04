@@ -1,4 +1,4 @@
-package SlidingWindow_TwoPointer;
+package SlidingWindow_TwoPointer.Medium;
 
 //Given a string s, find the length of the longest substring without duplicate characters.
 //Example 1:
