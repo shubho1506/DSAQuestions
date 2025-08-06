@@ -9,21 +9,21 @@ public class RomanToInteger {
     }
 
     public static int romanToInteger(String s) {
-        Map<Character, Integer> m = new HashMap();
-        m.put('I', 1);
-        m.put('V', 5);
-        m.put('X', 10);
-        m.put('L', 50);
-        m.put('C', 100);
-        m.put('D', 500);
-        m.put('M', 1000);
+        Map<Character, Integer> hmap = new HashMap();
+        hmap.put('I', 1);
+        hmap.put('V', 5);
+        hmap.put('X', 10);
+        hmap.put('L', 50);
+        hmap.put('C', 100);
+        hmap.put('D', 500);
+        hmap.put('M', 1000);
         int ans = 0;
 
         for(int i = 0; i < s.length(); ++i) {
-            if (i < s.length() - 1 && (Integer)m.get(s.charAt(i)) < (Integer)m.get(s.charAt(i + 1))) {
-                ans -= (Integer)m.get(s.charAt(i));
+            if (i < s.length() - 1 && (Integer) hmap.get(s.charAt(i)) < (Integer) hmap.get(s.charAt(i + 1))) {
+                ans -= (Integer) hmap.get(s.charAt(i));
             } else {
-                ans += (Integer)m.get(s.charAt(i));
+                ans += (Integer) hmap.get(s.charAt(i));
             }
         }
 
