@@ -1,4 +1,4 @@
-package GreedyProblems;
+package GreedyProblems.Medium;
 
 //We have a wooden plank of length n units. Some ants are walking on the plank, each ant moves with a
 // speed of 1 unit per second, with some moving left and others right.
