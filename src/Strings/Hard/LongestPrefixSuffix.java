@@ -17,7 +17,7 @@ package Strings.Hard;
 
 public class LongestPrefixSuffix {
     public static void main(String[] args) {
-        System.out.println(getLPSLength("aabcdaabc"));
+        System.out.println(getLPSLength("pqrstupqrstupqrs"));
     }
 
     static int getLPSLength(String s) {
