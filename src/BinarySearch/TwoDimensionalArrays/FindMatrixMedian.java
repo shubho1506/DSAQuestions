@@ -25,7 +25,8 @@ public class FindMatrixMedian {
     }
 
     static int median(int[][] matrix, int m, int n) {
-        int low = Integer.MAX_VALUE, high = Integer.MIN_VALUE;
+        int low = Integer.MAX_VALUE;
+        int high = Integer.MIN_VALUE;
 
         // point low and high to right elements
         for (int i = 0; i < m; i++) {
@@ -37,14 +38,19 @@ public class FindMatrixMedian {
         while (low <= high) {
             int mid = (low + high) / 2;
             int smallEqual = countSmallEqual(matrix, m, n, mid);
-            if (smallEqual <= req) low = mid + 1;
-            else high = mid - 1;
+            if (smallEqual <= req){
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
         }
         return low;
     }
 
     static int upperBound(int[] arr, int x, int n) {
-        int low = 0, high = n - 1;
+        int low = 0;
+        int high = n - 1;
         int ans = n;
 
         while (low <= high) {
