@@ -45,11 +45,9 @@ public class MinimumNumberOfDaysToMakeMBouquets {
             si = Math.min(si,i);
             ei = Math.max(ei,i);
         }
-
         while(si<=ei){
             int mid = si+(ei-si)/2;
             int count = isPossible(bloomDay,m,k,mid);
-
             if(count>=m){
                 ans = mid;
                 ei = mid-1;
